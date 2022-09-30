@@ -5,7 +5,7 @@
 <div style="margin-top: 150px;">
     <div class="container">
         {% if user.is_authenticated %}
-        <form method>
+        <form method="POST">
             <h1>{{object.title|upper}}</h1> <br>
             <img src="{{object.head_image.url}}">
             {% csrf_token %}
