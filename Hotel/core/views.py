@@ -2,10 +2,10 @@ from gc import get_objects
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView
-from .forms import PostForm
-from .models import PostModel
+from .forms import PostForm, CommentForm
+from .models import PostModel, CommentModel
 from django.views import generic 
-from django.views.generic import DetailView, ListView, TemplateView, UpdateView, DeleteView
+from django.views.generic import CreateView ,DetailView, ListView, TemplateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.urls import  reverse_lazy 
 
@@ -103,3 +103,12 @@ class DeletePost(generic.DeleteView):
 
     # form_class = PostForm 
    
+
+class CommentView(generic.CreateView):
+    model= CommentModel 
+    form_class = CommentForm
+    template_name= 'core/comment.html' 
+    # success_url= reverse_lazy('details.html') 
+    # def form_vaild(self,form):
+    #     form.instance.post.id = self.kwargs['pk']
+    #     return super().form_vaild(form)

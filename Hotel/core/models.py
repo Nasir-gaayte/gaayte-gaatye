@@ -30,3 +30,18 @@ class PostModel(models.Model):
     def get_absolute_url(self):
         return reverse("home")
         
+
+
+class CommentModel(models.Model):
+    post = models.ForeignKey(PostModel, on_delete=models.CASCADE, related_name="comments",null=True,blank=True)
+    name = models.CharField(null= True, blank=True, max_length=255)
+    comm = models.TextField(null=True, blank=True)
+    comment_date = models.DateField(auto_now_add=True)
+
+
+    def __str__(self):
+        return '%s - %s' % (self.post, self.name)
+    
+    def get_absolute_url(self):
+        return reverse("home")
+     

@@ -11,6 +11,14 @@
         <div style="height: 90vh;">
         <img style="max-width: 100%; max-height: 100%;" src="{{post.head_image.url}}"> <hr>
         {{post.text|safe}} <br> <br>
+        <button type="submit" class="btn btn-outline-success"><a href="{% url 'comment' post.id %}">Comment ....</a></button><br>
+        {% if  post.comments.all %}
+        no comments..
+        {% else %}
+            {% for comme in post.comments.all %}
+                {{comme.name}}--{{comme.comm|safe}} <br>
+            {% endfor %}
+        {% endif %}
          <hr> 
          {% if user.is_authenticated %}
          <button type="submit" class="btn btn-outline-success"><a href="{% url 'update_post' post.id %}">Update</a></button>
