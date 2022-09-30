@@ -13,4 +13,5 @@ urlpatterns = [
     # path('details/<int:pk>/',views.details,name='details'),
     path('details/<int:pk>/',views.PostDetail.as_view(),name='details'),
     path('update_post/<int:pk>/',views.UpdatePost.as_view(),name='update_post'),
+    path('delete_post/<int:pk>/',views.DeletePost.as_view(),name='delete_post'),
 ]

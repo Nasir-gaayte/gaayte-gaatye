@@ -13,7 +13,8 @@
         {{post.text|safe}} <br> <br>
          <hr> 
          {% if user.is_authenticated %}
-         <button type="submit" class="btn btn-outline-success"><a href="{% url 'update_post' post.id %}">update</a></button>
+         <button type="submit" class="btn btn-outline-success"><a href="{% url 'update_post' post.id %}">Update</a></button>
+         <button type="submit" class="btn btn-outline-danger"><a href="{% url 'delete_post' post.id %}">Delete</a></button>
          {%endif%}
     </div>
 </div>

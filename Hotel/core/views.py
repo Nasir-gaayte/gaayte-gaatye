@@ -1,10 +1,11 @@
+from gc import get_objects
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView
 from .forms import PostForm
 from .models import PostModel
 from django.views import generic 
-from django.views.generic import DetailView, ListView, TemplateView, UpdateView
+from django.views.generic import DetailView, ListView, TemplateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.urls import  reverse_lazy 
 
@@ -93,3 +94,12 @@ class UpdatePost(generic.UpdateView):
 
     template_name= 'core/update_post.html'    
 
+
+
+class DeletePost(generic.DeleteView):
+    model = PostModel
+    # form_class = PostForm 
+
+    template_name= 'core/delete_post.html'
+    success_url= reverse_lazy('home')
+   

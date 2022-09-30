@@ -4,12 +4,16 @@
 {% block content %}
 <div style="margin-top: 150px;">
     <div class="container">
+        {% if user.is_authenticated %}
         <form method="POST" enctype="multipart/form-data" >
             {% csrf_token %}
             {{form.media}}
             {{form|crispy}}
             <button type="submit" class="btn btn-outline-success">Post</button>
         </form>
+        {% else %}
+        <h1>You Have to login </h1>
+        {% endif  %}
     </div>
 </div>
   
