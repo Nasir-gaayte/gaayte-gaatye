@@ -5,14 +5,16 @@
 <div style="margin-top: 150px;">
     <div class="container">
         
-        {{post.title|title}} 
+        {{post.title|title|upper}} 
         <br> py{{post.user}}
         <small>{{post.postdate}}</small>
         <div style="height: 90vh;">
         <img style="max-width: 100%; max-height: 100%;" src="{{post.head_image.url}}"> <hr>
         {{post.text|safe}} <br> <br>
          <hr> 
-        
+         {% if user.is_authenticated %}
+         <button type="submit" class="btn btn-outline-success"><a href="{% url 'update_post' post.id %}">update</a></button>
+         {%endif%}
     </div>
 </div>
   

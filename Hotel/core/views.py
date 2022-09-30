@@ -1,11 +1,10 @@
-from email.mime import image
-import imp
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView
 from .forms import PostForm
 from .models import PostModel
 from django.views import generic 
-from django.views.generic import DetailView, ListView, TemplateView
+from django.views.generic import DetailView, ListView, TemplateView, UpdateView
 from django.contrib import messages
 from django.urls import  reverse_lazy 
 
@@ -20,7 +19,7 @@ class HomeView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["posts"] = PostModel.objects.all() 
+        context["posts"] = PostModel.objects.order_by('-id')
         return context
       
 
@@ -60,7 +59,7 @@ def team(request):
 #     form = PostForm()
 #     return render(request,'core/add_post.html',{'form':form}) 
 
-
+# @login_required
 class AddPost(generic.CreateView):
     model: PostModel
     form_class= PostForm
@@ -87,5 +86,10 @@ class PostDetail(generic.DetailView):
     context_object_name= 'post'
 
     
-      
+
+class UpdatePost(generic.UpdateView):
+    model = PostModel
+    form_class = PostForm 
+
+    template_name= 'core/update_post.html'    
 

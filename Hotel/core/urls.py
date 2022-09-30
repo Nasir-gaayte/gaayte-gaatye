@@ -1,6 +1,6 @@
 from django.urls import path
 from core import views
-from core.views import AddPost,PostDetail,HomeView
+from core.views import AddPost,PostDetail,HomeView,UpdatePost
 
 
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
     path('add_post/',views.AddPost.as_view(),name='add_post'),
     # path('details/<int:pk>/',views.details,name='details'),
     path('details/<int:pk>/',views.PostDetail.as_view(),name='details'),
+    path('update_post/<int:pk>/',views.UpdatePost.as_view(),name='update_post'),
 ]

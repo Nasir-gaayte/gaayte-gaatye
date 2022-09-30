@@ -107,15 +107,16 @@ background-color: #4be7ab;">
           <li>
             <a style="text-decoration: none; color: #665bfacc;" href="{% url 'details' post.id %}"><h1>{{post.title|upper}}</h1></a> 
             <small> {{post.user}} <br>{{post.postdate}}</small> <br>
-            {{post.head_image.url}}
+            {% comment %} {{post.head_image.url}} {% endcomment %}
             <a href="{% url 'details' post.id %}">
             <img style="max-width: 100%; max-height: 100%;" src="{{post.head_image.url}}">
             </a>
-             <br> <hr> href
-            {{post.text|safe|truncatewords:35}} <br> <br>
+             <br> <hr> 
+            {{post.text|safe|truncatewords:15}} <br> <br>
              <hr> <hr> <br> <br>
           </li>
         </div>
+        
         {% endfor %}
       </ul>
     </div>
