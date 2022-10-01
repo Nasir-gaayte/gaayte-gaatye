@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
   <!-- CSS only -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,28 +97,73 @@ background-color: #4be7ab;">
  
   <script src="{% static 'js/bootstrap.min.js'%}" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
   {% block content %}
-  <div class="container" style="margin-top: 100px;">
-
-    <div class="container">
-      <span> <H1>HomePage</H1></span>
-      <ul style="list-style: none;">
-        {% for post in posts %}
-        <div class="container">
-          <li>
-            <a style="text-decoration: none; color: #665bfacc;" href="{% url 'details' post.id %}"><h1>{{post.title|upper}}</h1></a> 
-            <small> {{post.user}} <br>{{post.postdate}}</small> <br>
-            {% comment %} {{post.head_image.url}} {% endcomment %}
-            <a href="{% url 'details' post.id %}">
-            <img style="max-width: 100%; max-height: 100%;" src="{{post.head_image.url}}">
-            </a>
-             <br> <hr> 
-            {{post.text|safe|truncatewords:15}} <br> <br>
-             <hr> <hr> <br> <br>
-          </li>
+  <div class="container">
+    <div class="row">
+      <div class="container col-2 col-md-2 toside"  style="margin-top: 100px; 
+      height: 790px;
+      {% comment %} background-color: #7fffd4; {% endcomment %}
+      mask-repeat:no-repeat ;
+      justify-self: center;">
+        <div class="col mt-3 " >
+          <div class="row" style="align-items:center
+          background-color:wight;">
+            <span>Xayaysiiska wac <br> tel:xxxx-xx-xxxxxxx </span>
+            
+            </div>
+          <div class="row" style="align-items:center">
+          <img src="{% static 'images/logo.jpeg' %}" >
+          jest to add 
+          </div>
+          <div class="row" >
+          <img src="/media/images/hg1.gif" >
+          jest to add 
+          </div>
+          <div class="row" >
+          <img src="/media/images/hg2.gif" >
+          jest to add 
+          </div>
+          <div class="row" >
+          <img src="/media/images/hg3.gif" >
+          jest to add 
+          </div>
+          <div class="row" style=>
+          <img src="/media/images/gh4.gif" >
+          jest to add 
+          </div>
+          <div class="row" style=>
+            <img src="/media/images/gh5.gif" >
+            jest to add 
+            </div>
+            <div class="row" style=>
+              <img src="/media/images/gh6.gif" >
+              jest to add 
+              </div>
         </div>
-        
-        {% endfor %}
-      </ul>
+      </div>
+      <div class="container col-12 col-sm-6 col-md-8" style="margin-top: 100px;">
+  
+        <div class="container">
+          <span> <H1>HomePage</H1></span>
+          <ul style="list-style: none;">
+            {% for post in posts %}
+            <div class="container">
+              <li>
+                <a style="text-decoration: none; color: #665bfacc;" href="{% url 'details' post.id %}"><h1>{{post.title|upper}}</h1></a> 
+                <small> {{post.user}} <br>{{post.postdate}}</small> <br>
+                {% comment %} {{post.head_image.url}} {% endcomment %}
+                <a href="{% url 'details' post.id %}">
+                <img style="max-width: 100%; max-height: 100%;" src="{{post.head_image.url}}">
+                </a>
+                <br> <hr> 
+                {{post.text|safe|truncatewords:15}} <br> <br>
+                <hr> <hr> <br> <br>
+              </li>
+            </div>
+            
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
   {% endblock content %}

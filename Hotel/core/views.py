@@ -8,6 +8,10 @@ from django.views import generic
 from django.views.generic import CreateView ,DetailView, ListView, TemplateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.urls import  reverse_lazy 
+from django.db.models.functions import Now
+from datetime import timedelta , datetime
+
+
 
 
 # Create your views here.
@@ -70,6 +74,13 @@ class AddPost(generic.CreateView):
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
+
+    # def form_valid(self, form):
+    #     form.instance.get_delete = self.post
+    #     return super().form_valid(form)    
+
+    # def get_delete (self,*args,**options):
+    #     PostModel.objects.filter(post=datetime.Now()-timedelta(s=10)).delete()    
 #=================================================================
 
 
@@ -85,6 +96,8 @@ class PostDetail(generic.DetailView):
     model = PostModel
     template_name = 'core/details.html'
     context_object_name= 'post'
+
+    
 
     
 
@@ -108,7 +121,8 @@ class CommentView(generic.CreateView):
     model= CommentModel 
     form_class = CommentForm
     template_name= 'core/comment.html' 
-    # success_url= reverse_lazy('details.html') 
-    # def form_vaild(self,form):
-    #     form.instance.post.id = self.kwargs['pk']
-    #     return super().form_vaild(form)
+    success_url= reverse_lazy('home') 
+
+    def form_valid(self, form):
+        form.instance.pro_id= self.kwargs['pk']
+        return super().form_valid(form)
